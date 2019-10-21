@@ -1,0 +1,25 @@
+.desktop {
+    width: 1440px;
+    height: 10150px;
+}
+  
+.mobile {
+    width: 375px;
+    height: 8796px;
+}
+  
+@media (max-width: 550px) {
+  .frame {
+    width: 100%;
+  }
+
+  .frame-controls {
+    position: absolute;
+    left: 59%;
+    top: 0.7%;
+  }
+  
+  .button-switch {
+    display: none;
+  }
+}

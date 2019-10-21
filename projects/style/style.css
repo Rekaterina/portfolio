@@ -102,6 +102,10 @@ a:hover {
     display: none;
 }
 
+.visible {
+    display: block;
+}
+
 .projects {
     display: flex;
     justify-content: center;
@@ -170,6 +174,18 @@ a:hover {
     border: 1.5px solid black;
     display: flex;
     justify-content: space-between;
+}
+
+.button-description {
+    width: 180px;
+    height: 40px;
+    margin-top: 5px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 18px;
+    background-color: rgb(107, 185, 185);
+    cursor: pointer;
 }
 
 .projects-item-data {
@@ -309,7 +325,7 @@ a:hover {
     }
 
     .project-item-image {
-        width: 250px;
+        width: 280px;
         height: 330px;
     }
 
@@ -322,4 +338,25 @@ a:hover {
         font-size: 22px;
     }
 }
+
+@media (max-width: 425px) {
+    .control {
+        display: none;
+    }
+
+    .projects-item-data {
+        display: none;
+    }
+
+    .projects-item-info {
+        margin: 10px;
+    }
+}
+
+@media (min-width: 426px) {
+    .button-description {
+        display: none;
+    }
+}
+
 

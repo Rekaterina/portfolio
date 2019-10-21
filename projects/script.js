@@ -2,6 +2,8 @@ const educationTitle = document.querySelector('.education-section-title-containe
 const educationInfo = document.querySelector('.education-info-container');
 const slider = document.querySelector('.slider');
 const items = document.querySelectorAll('.slider .projects-item');
+const buttonDesc = document.querySelectorAll('.button-description');
+const itemDesc = document.querySelector('.projects-item-data');
 
 
 //expansion panel
@@ -9,6 +11,15 @@ const items = document.querySelectorAll('.slider .projects-item');
 educationTitle.addEventListener('click', () => {
     educationInfo.classList.toggle('hidden');
     slider.classList.toggle('slider-down');
+});
+
+// show and hide description
+
+Array.from(buttonDesc).forEach((item) => {
+	item.addEventListener('click', (e) => {
+		e.target.innerHTML = e.target.innerHTML == 'Show description' ? 'Hide description' : 'Show description';
+	});
+	
 });
 
 // slider and swiper

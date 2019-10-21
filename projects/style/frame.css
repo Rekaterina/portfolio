@@ -1,0 +1,40 @@
+.main-frame {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.frame {
+    border: none;
+}
+
+.frame-controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    width: 100px;
+    height: 110px;
+}
+
+.frame-controls-button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: rgb(107, 185, 185);
+    cursor: pointer;
+}
+
+.frame-controls-button:hover {
+    background-color: rgb(107, 185, 185, 0.7);
+}
+
+@media (max-width: 640px) {
+    .frame {
+      width: 100%;
+    }
+}
