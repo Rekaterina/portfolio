@@ -4,7 +4,7 @@ const slider = document.querySelector('.slider');
 const items = document.querySelectorAll('.slider .projects-item');
 const buttonDesc = document.querySelectorAll('.button-description');
 const itemDesc = document.querySelector('.projects-item-data');
-
+const links = document.querySelectorAll('.project-item-link');
 
 //expansion panel
 
@@ -13,13 +13,26 @@ educationTitle.addEventListener('click', () => {
     slider.classList.toggle('slider-down');
 });
 
+//open project
+
+Array.from(links).forEach(item => {
+    item.addEventListener('touchend', () => {
+        this.open(item.href, '_self');
+    });
+});
+
 // show and hide description
 
 Array.from(buttonDesc).forEach((item) => {
-	item.addEventListener('click', (e) => {
+	item.addEventListener('click',  (e) => {
 		e.target.innerHTML = e.target.innerHTML == 'Show description' ? 'Hide description' : 'Show description';
-	});
-	
+	});	
+});
+
+Array.from(buttonDesc).forEach((item) => {
+	item.addEventListener('touchend',  (e) => {
+		e.target.innerHTML = e.target.innerHTML == 'Show description' ? 'Hide description' : 'Show description';
+	});	
 });
 
 // slider and swiper
@@ -82,7 +95,7 @@ const swipedetect = (el) => {
 	let startTime = 0;
 	let elapsedTime = 0;
 
-	let threshold = 150;
+	let threshold = 100;
 	let restraint = 100;
 	let allowedTime = 300;
 
