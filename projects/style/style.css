@@ -1,6 +1,6 @@
 .wrapper {
     max-width: 900px;
-    height: 1000px;
+    height: 1030px;
     margin: 0 auto;
     font-family: 'Gayathri', Arial, sans-serif;
     font-weight: 700;
@@ -134,7 +134,7 @@ a:hover {
 
 .slider {
     position: absolute;
-    top: 418%;
+    top: 445%;
     left: 50%;
     width: 700px;
     transform: translate(-50%, -50%);
@@ -142,7 +142,7 @@ a:hover {
 }
 
 .slider-down {
-    top: 420%;
+    top: 447%;
 }
   
 .slider-container {
@@ -170,7 +170,7 @@ a:hover {
 }
 
 .projects-item-info {
-    margin: 30px 10%;
+    margin: 50px 10%;
     border: 1.5px solid black;
     display: flex;
     justify-content: space-between;
@@ -295,7 +295,7 @@ a:hover {
 @media (max-width: 600px) {
 
     .wrapper {
-        height: 1100px;
+        height: 1150px;
     }
 
     .header {
@@ -330,7 +330,7 @@ a:hover {
     }
 
     .slider {
-        top: 460%;
+        top: 490%;
     }
 
     .projects-item-name {
@@ -339,7 +339,7 @@ a:hover {
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 426px) {
     .control {
         display: none;
     }
@@ -351,9 +351,13 @@ a:hover {
     .projects-item-info {
         margin: 10px;
     }
+
+    .projects-item-name {
+        padding: 0;
+    }
 }
 
-@media (min-width: 426px) {
+@media (min-width: 427px) {
     .button-description {
         display: none;
     }
