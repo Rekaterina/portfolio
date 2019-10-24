@@ -15,22 +15,25 @@ educationTitle.addEventListener('click', () => {
 
 //open project
 
-Array.from(links).forEach(item => {
-    item.addEventListener('touchstart', (e) => {
-		let start = e.changedTouches[0].pageX;
-	  
-		Array.from(links).forEach(item => {
-			item.addEventListener('touchend', (e) => {
-				let cancel = e.changedTouches[0].pageX;
-			    if (start == cancel) {
-					this.open(item.href, '_self');
-				}
-			});
-		});
+let startTouch;
+let cancelTouch;
 
+Array.from(links).forEach(item => {
+	item.addEventListener('touchstart', (e) => {
+		startTouch = e.changedTouches[0].pageX;
 	});
-	
 });
+
+Array.from(links).forEach(item => {
+	item.addEventListener('touchend', (e) => {
+		cancelTouch = e.changedTouches[0].pageX;
+		if (startTouch == cancelTouch) {
+			this.open(item.href, '_self');
+		}; 
+	});
+});
+
+
 
 // show and hide description
 
