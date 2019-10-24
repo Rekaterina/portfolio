@@ -38,7 +38,6 @@ Array.from(links).forEach(item => {
 Array.from(buttonDesc).forEach((item) => {
 	item.addEventListener('click',  (e) => {
 		e.target.innerHTML = e.target.innerHTML == 'Show description' ? 'Hide description' : 'Show description';
-		console.log(e.target.nextElementSibling);
 		e.target.nextElementSibling.style.display = e.target.nextElementSibling.style.display == 'block' ? 'none' : 'block';
 	});	
 });
@@ -46,7 +45,6 @@ Array.from(buttonDesc).forEach((item) => {
 Array.from(buttonDesc).forEach((item) => {
 	item.addEventListener('touchend',  (e) => {
 		e.target.innerHTML = e.target.innerHTML == 'Show description' ? 'Hide description' : 'Show description';
-		console.log(e.target.nextElementSibling);
 		e.target.nextElementSibling.style.display = e.target.nextElementSibling.style.display == 'block' ? 'none' : 'block';
 	});	
 });
