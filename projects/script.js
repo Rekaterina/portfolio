@@ -3,7 +3,7 @@ const educationInfo = document.querySelector('.education-info-container');
 const slider = document.querySelector('.slider');
 const items = document.querySelectorAll('.slider .projects-item');
 const buttonDesc = document.querySelectorAll('.button-description');
-const itemDesc = document.querySelector('.projects-item-data');
+const itemDesc = document.querySelectorAll('.projects-item-data');
 const links = document.querySelectorAll('.project-item-link');
 
 //expansion panel
@@ -15,19 +15,19 @@ educationTitle.addEventListener('click', () => {
 
 //open project
 
-let startTouch;
-let cancelTouch;
+let touchstartX;
+let touchendX;
 
 Array.from(links).forEach(item => {
 	item.addEventListener('touchstart', (e) => {
-		startTouch = e.changedTouches[0].pageX;
+		touchstartX = e.changedTouches[0].pageX;
 	});
 });
 
 Array.from(links).forEach(item => {
 	item.addEventListener('touchend', (e) => {
-		cancelTouch = e.changedTouches[0].pageX;
-		if (startTouch == cancelTouch) {
+		touchendX = e.changedTouches[0].pageX;
+		if (touchstartX === touchendX) {
 			this.open(item.href, '_self');
 		}; 
 	});
@@ -48,6 +48,23 @@ Array.from(buttonDesc).forEach((item) => {
 		e.target.nextElementSibling.style.display = e.target.nextElementSibling.style.display == 'block' ? 'none' : 'block';
 	});	
 });
+
+window.addEventListener('resize',  () => {
+	if (window.innerWidth > 426) {
+		Array.from(itemDesc).forEach((item) => {
+			item.style.display = 'block';
+		});
+	}
+
+	if (window.innerWidth < 427) {
+		Array.from(itemDesc).forEach((item) => {
+			item.style.display = 'none';
+			Array.from(buttonDesc).forEach((item) => {
+				item.innerHTML == 'Hide description';
+			});
+		});
+	}
+});	
 
 // slider and swiper
 
