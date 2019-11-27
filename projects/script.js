@@ -1,5 +1,6 @@
 const educationTitle = document.querySelector('.education-section-title-container');
 const educationInfo = document.querySelector('.education-info-container');
+const educationControl = document.querySelector('.education-section-control');
 const slider = document.querySelector('.slider');
 const items = document.querySelectorAll('.slider .projects-item');
 const buttonDesc = document.querySelectorAll('.button-description');
@@ -10,7 +11,8 @@ const links = document.querySelectorAll('.project-item-link');
 
 educationTitle.addEventListener('click', () => {
     educationInfo.classList.toggle('hidden');
-    slider.classList.toggle('slider-down');
+	slider.classList.toggle('slider-down');
+	educationControl.classList.toggle('rotate');
 });
 
 //open project
