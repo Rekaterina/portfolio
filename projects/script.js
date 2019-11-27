@@ -11,7 +11,6 @@ const links = document.querySelectorAll('.project-item-link');
 
 educationTitle.addEventListener('click', () => {
     educationInfo.classList.toggle('hidden');
-	slider.classList.toggle('slider-down');
 	educationControl.classList.toggle('rotate');
 });
 
@@ -38,16 +37,27 @@ Array.from(links).forEach(item => {
 // show and hide description
 
 Array.from(buttonDesc).forEach((item) => {
-	item.addEventListener('click',  (e) => {
-		e.target.innerHTML = e.target.innerHTML == 'Show description' ? 'Hide description' : 'Show description';
-		e.target.nextElementSibling.style.display = e.target.nextElementSibling.style.display == 'block' ? 'none' : 'block';
+	item.addEventListener('click', ({target}) => {
+		if (target.innerHTML === 'Show description') {
+			target.innerHTML = 'Hide description';
+			target.nextElementSibling.style.display = 'block';
+		} else {
+			target.innerHTML = 'Show description';
+			target.nextElementSibling.style.display ='none';
+		}
 	});	
 });
 
+
 Array.from(buttonDesc).forEach((item) => {
-	item.addEventListener('touchend',  (e) => {
-		e.target.innerHTML = e.target.innerHTML == 'Show description' ? 'Hide description' : 'Show description';
-		e.target.nextElementSibling.style.display = e.target.nextElementSibling.style.display == 'block' ? 'none' : 'block';
+	item.addEventListener('touchend', ({target}) => {
+		if (target.innerHTML === 'Show description') {
+			target.innerHTML = 'Hide description';
+			target.nextElementSibling.style.display = 'block';
+		} else {
+			target.innerHTML = 'Show description';
+			target.nextElementSibling.style.display ='none';
+		}
 	});	
 });
 
