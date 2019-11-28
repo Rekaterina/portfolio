@@ -16,19 +16,19 @@ educationTitle.addEventListener('click', () => {
 
 //open project
 
-let touchstartX;
-let touchendX;
+let touchStartX;
+let touchEndX;
 
 Array.from(links).forEach(item => {
 	item.addEventListener('touchstart', (e) => {
-		touchstartX = e.changedTouches[0].pageX;
+		touchStartX = e.changedTouches[0].pageX;
 	});
 });
 
 Array.from(links).forEach(item => {
 	item.addEventListener('touchend', (e) => {
-		touchendX = e.changedTouches[0].pageX;
-		if (touchstartX === touchendX) {
+		touchEndX = e.changedTouches[0].pageX;
+		if (touchStartX === touchEndX) {
 			this.open(item.href, '_self');
 		}; 
 	});
@@ -61,6 +61,14 @@ Array.from(buttonDesc).forEach((item) => {
 	});	
 });
 
+window.addEventListener('load',  () => {
+	if (window.innerWidth < 427) {
+		Array.from(itemDesc).forEach((item) => {
+			item.style.display = 'none';
+		});	
+	}
+});	
+
 window.addEventListener('resize',  () => {
 	if (window.innerWidth > 426) {
 		Array.from(itemDesc).forEach((item) => {
@@ -71,9 +79,10 @@ window.addEventListener('resize',  () => {
 	if (window.innerWidth < 427) {
 		Array.from(itemDesc).forEach((item) => {
 			item.style.display = 'none';
-			Array.from(buttonDesc).forEach((item) => {
-				item.innerHTML == 'Hide description';
-			});
+		});
+
+		Array.from(buttonDesc).forEach((item) => {
+			item.innerHTML = 'Show description';
 		});
 	}
 });	
@@ -128,7 +137,7 @@ document.querySelector('.control.right').addEventListener('click', function() {
 	}
 });
 
-const swipedetect = (el) => {
+const swipeDetect = (el) => {
   
 	let surface = el;
 	let startX = 0;
@@ -142,76 +151,64 @@ const swipedetect = (el) => {
 	let restraint = 100;
 	let allowedTime = 300;
 
-	surface.addEventListener('mousedown', function(e){
+	surface.addEventListener('mousedown', function(e) {
 		startX = e.pageX;
 		startY = e.pageY;
 		startTime = new Date().getTime();
 		e.preventDefault();
 	}, false);
 
-	surface.addEventListener('mouseup', function(e){
+	surface.addEventListener('mouseup', function(e) {
 		distX = e.pageX - startX;
 		distY = e.pageY - startY;
 		elapsedTime = new Date().getTime() - startTime;
 		if (elapsedTime <= allowedTime){
-			if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint){
-				if ((distX > 0)) {
-					if (isEnabled) {
-						previousItem(currentItem);
-					}
+			if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
+				if (distX > 0 && isEnabled) {
+					previousItem(currentItem);
 				} else {
-					if (isEnabled) {
-						nextItem(currentItem);
-					}
+					nextItem(currentItem);
 				}
 			}
 		}
 		e.preventDefault();
 	}, false);
 
-	surface.addEventListener('touchstart', function(e){
+	surface.addEventListener('touchstart', function(e) {
 		if (e.target.classList.contains('arrow') || e.target.classList.contains('control')) {
-			if (e.target.classList.contains('left')) {
-				if (isEnabled) {
-					previousItem(currentItem);
-				}
+			if (e.target.classList.contains('left') && isEnabled) {
+				previousItem(currentItem);
 			} else {
-				if (isEnabled) {
+				nextItem(currentItem);
+			}
+		}
+		let touchObj = e.changedTouches[0];
+		startX = touchObj.pageX;
+		startY = touchObj.pageY;
+		startTime = new Date().getTime();
+		e.preventDefault();
+	}, false);
+
+	surface.addEventListener('touchmove', function(e) {
+			e.preventDefault();
+	}, false);
+
+	surface.addEventListener('touchend', function(e) {
+		let touchObj = e.changedTouches[0];
+		distX = touchObj.pageX - startX;
+		distY = touchObj.pageY - startY;
+		elapsedTime = new Date().getTime() - startTime;
+		if (elapsedTime <= allowedTime){
+			if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
+				if (distX > 0 && isEnabled) {
+					previousItem(currentItem);
+				} else {
 					nextItem(currentItem);
 				}
 			}
 		}
-			var touchobj = e.changedTouches[0];
-			startX = touchobj.pageX;
-			startY = touchobj.pageY;
-			startTime = new Date().getTime();
-			e.preventDefault();
-	}, false);
-
-	surface.addEventListener('touchmove', function(e){
-			e.preventDefault();
-	}, false);
-
-	surface.addEventListener('touchend', function(e){
-			var touchobj = e.changedTouches[0];
-			distX = touchobj.pageX - startX;
-			distY = touchobj.pageY - startY;
-			elapsedTime = new Date().getTime() - startTime;
-			if (elapsedTime <= allowedTime){
-					if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint){
-							if ((distX > 0)) {
-								if (isEnabled) {
-									previousItem(currentItem);
-								}
-							} else {
-								if (isEnabled) {
-									nextItem(currentItem);
-								}
-							}
-					}
-			}
-			e.preventDefault();
+		e.preventDefault();
 	}, false);
 }
 
-swipedetect(slider);
+swipeDetect(slider);
